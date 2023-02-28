@@ -11,7 +11,7 @@ static char* colors[] = {
         "red",
         "black",
 };
-void deleteCar(struct Car* cars, int* size, int index) {
+struct Car* deleteCar(struct Car* cars, int* size, int index) {
     if (index < 0 || index >= *size) {
         printf("Error\n");
         return;
@@ -23,7 +23,8 @@ void deleteCar(struct Car* cars, int* size, int index) {
     printf("%d", (*size)-1);
     free(cars[(*size) - 1].name);
     (*size)--;
-    realloc(cars, sizeof(struct Car) * *size);
+    cars = realloc(cars, sizeof(struct Car) * *size);
+    return cars;
 }
 void printArrayStructs(struct Car* cars, int size) {
     int bool = 0;
@@ -89,22 +90,19 @@ int setArraySize(int a) {
     else return a;
 }
 void selectionSortMaxSpeedandCoast(struct Car* cars, int n) {
-    int end = n - 1;
-    for (int i = 0;i < n;i++) {
-        int maxInd = 0;
-        for (int j = 0;j <= end;j++) {
-            if (cars[maxInd].maxSpeed < cars[j].maxSpeed) {
+    for (int i = 0; i < n - 1; ++i) {
+        int maxInd = i;
+        for (int j = i + 1; j < n; ++j) {
+            if (cars[j].maxSpeed > cars[maxInd].maxSpeed ||
+                (cars[j].maxSpeed == cars[maxInd].maxSpeed && cars[j].coast >= cars[maxInd].coast)) {
                 maxInd = j;
             }
-            else if (cars[maxInd].maxSpeed == cars[j].maxSpeed) {
-                if (cars[maxInd].coast <= cars[j].coast) maxInd = j;
-            }
         }
-        struct Car temp = cars[maxInd];
-        cars[maxInd] = cars[end];
-        cars[end] = temp;
-        end--;
-        maxInd = 0;
+        if (maxInd != i) {
+            struct Car temp = cars[i];
+            cars[i] = cars[maxInd];
+            cars[maxInd] = temp;
+        }
     }
 }
 struct Car initCar(struct Car car) {
@@ -119,7 +117,7 @@ struct Car initCar(struct Car car) {
     car.name = str;
     printf("Set max speed\n");
     float newSpeed = 0;
-    newSpeed = setArraySize(newSpeed);
+    newSpeed = (int)setArraySize(newSpeed);
     car.maxSpeed = newSpeed;
     int color = 0;
     while (1) {

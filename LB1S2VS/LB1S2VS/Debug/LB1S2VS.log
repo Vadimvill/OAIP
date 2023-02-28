@@ -1,4 +1,8 @@
-﻿  struct.c
-C:\Users\botme\source\repos\LB1S2VS\LB1S2VS\struct.c(122,37): warning C4244: функция: преобразование "float" в "int", возможна потеря данных
-C:\Users\botme\source\repos\LB1S2VS\LB1S2VS\struct.c(122,38): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+﻿  Source.c
+  struct.c
+C:\Users\botme\source\repos\LB1S2VS\LB1S2VS\struct.c(17,9): warning C4033: "deleteCar" должен возвращать значение
+C:\Users\botme\source\repos\LB1S2VS\LB1S2VS\struct.c(120,37): warning C4244: функция: преобразование "float" в "int", возможна потеря данных
+C:\Users\botme\source\repos\LB1S2VS\LB1S2VS\struct.c(120,38): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+  Создание кода...
+C:\Users\botme\source\repos\LB1S2VS\LB1S2VS\struct.c(28): warning C4715: deleteCar: значение возвращается не при всех путях выполнения
   LB1S2VS.vcxproj -> C:\Users\botme\source\repos\LB1S2VS\Debug\LB1S2VS.exe

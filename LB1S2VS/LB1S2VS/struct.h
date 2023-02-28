@@ -17,6 +17,6 @@ struct Car initCar(struct Car car);
 void selectionSortMaxSpeed(struct Car* cars, int n);
 void selectionSortCoast(struct Car* cars, int n);
 struct Car* initAllCars(struct Car* cars, int size);
-void deleteCar(struct Car* cars, int* size, int index);
+struct Car* deleteCar(struct Car* cars, int* size, int index);
 void selectionSortMaxSpeedandCoast(struct Car* cars, int n);
 int setArraySize(int a);
