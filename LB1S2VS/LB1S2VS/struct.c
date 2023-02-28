@@ -14,7 +14,7 @@ static char* colors[] = {
 struct Car* deleteCar(struct Car* cars, int* size, int index) {
     if (index < 0 || index >= *size) {
         printf("Error\n");
-        return;
+        return cars;
     }
 
     for (int i = index; i < *size - 1; i++) {
@@ -76,7 +76,7 @@ void selectionSortMaxSpeed(struct Car* cars, int n) {
         end--;
     }
 }
-int setArraySize(int a) {
+int setArraySizeInt(int a) {
     while ((scanf_s("%d", &a)) != 1 || getchar() != '\n') {
         printf("Error\n");
         rewind(stdin);
@@ -84,7 +84,20 @@ int setArraySize(int a) {
     if (a <= 0) {
         printf("Error\n");
         rewind(stdin);
-        a = setArraySize(a);
+        a = setArraySizeInt(a);
+        return a;
+    }
+    else return a;
+}
+float setArraySizeFloat(float a) {
+    while ((scanf_s("%d", &a)) != 1 || getchar() != '\n') {
+        printf("Error\n");
+        rewind(stdin);
+    }
+    if (a <= 0) {
+        printf("Error\n");
+        rewind(stdin);
+        a = setArraySizeFloat(a);
         return a;
     }
     else return a;
@@ -105,35 +118,35 @@ void selectionSortMaxSpeedandCoast(struct Car* cars, int n) {
         }
     }
 }
-struct Car initCar(struct Car car) {
+void initCar(struct Car* car,int index) {
     printf("Set coast\n");
     int newCoast = 0;
-    newCoast = setArraySize(newCoast);
+    newCoast = setArraySizeInt(newCoast);
     rewind(stdin);
-    car.coast = newCoast;
+    car[index].coast = newCoast;
     printf("Set name\n");
     char* str = malloc(sizeof(char) * 255);
     fgets(str, 255, stdin);
-    car.name = str;
+    car[index].name = str;
     printf("Set max speed\n");
     float newSpeed = 0;
-    newSpeed = (int)setArraySize(newSpeed);
-    car.maxSpeed = newSpeed;
+    newSpeed = setArraySizeFloat(newSpeed);
+    car[index].maxSpeed = newSpeed;
     int color = 0;
     while (1) {
         printf("Select color\n 1-green || 2-red || 3-black");
         scanf_s("%d", &color);
         if (color <= 3 && color >= 1) {
-            car.color = color - 1;
+            car[index].color = color - 1;
             break;
         }
     }
-    car.init = 1;
+    car[index].init = 1;
     return car;
 }
 struct Car* initAllCars(struct Car* cars, int size) {
     for (int i = 0;i < size;i++) {
-        cars[i] = initCar(cars[i]);
+        initCar(cars,i);
     }
     return cars;
 }

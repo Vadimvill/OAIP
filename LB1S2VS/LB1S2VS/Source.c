@@ -14,21 +14,21 @@ void task() {
         rewind(stdin);
         printf("Select option\n 1-Create array || 2-Init car || 3-Print cars || 4-Sort coast || 5-Sort max speed ||"
             "6-Delete car || 7-Init all cars || 8-Sort coast and speed || 9-Exit\n");
-        select = setArraySize(select);
+        select = setArraySizeInt(select);
         switch (select) {
         case 1:
             if (checkCreate) {
                 printf("Set size\n");
-                size = setArraySize(size);
+                size = setArraySizeInt(size);
                 cars = createCarArray(size);
                 checkCreate = 0;
             }
             break;
         case 2:
             printf("Set car\n");
-            car = setArraySize(car);
+            car = setArraySizeInt(car);
             if (car > size) printf("Exeption\n");
-            else cars[size - 1] = initCar(cars[size - 1]);
+            else initCar(cars, car - 1);
             break;
         case 3:
             printArrayStructs(cars, size);
@@ -41,7 +41,7 @@ void task() {
             break;
         case 6:
             printf("Set index");
-            index = setArraySize(index);
+            index = setArraySizeInt(index);
             deleteCar(cars, &size, index - 1);
             break;
         case 7:

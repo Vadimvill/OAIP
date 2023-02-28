@@ -1,8 +1,4 @@
-﻿  Source.c
-  struct.c
-C:\Users\botme\source\repos\LB1S2VS\LB1S2VS\struct.c(17,9): warning C4033: "deleteCar" должен возвращать значение
-C:\Users\botme\source\repos\LB1S2VS\LB1S2VS\struct.c(120,37): warning C4244: функция: преобразование "float" в "int", возможна потеря данных
-C:\Users\botme\source\repos\LB1S2VS\LB1S2VS\struct.c(120,38): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-  Создание кода...
-C:\Users\botme\source\repos\LB1S2VS\LB1S2VS\struct.c(28): warning C4715: deleteCar: значение возвращается не при всех путях выполнения
+﻿  struct.c
+C:\Users\botme\source\repos\LB1S2VS\LB1S2VS\struct.c(93,21): warning C4477: "scanf_s": в строке форматирования "%d" требуется аргумент типа "int *", но вариативный аргумент "1" имеет тип "float *"
+C:\Users\botme\source\repos\LB1S2VS\LB1S2VS\struct.c(145,15): warning C4098: initCar: функция типа "void", возвращающая значение
   LB1S2VS.vcxproj -> C:\Users\botme\source\repos\LB1S2VS\Debug\LB1S2VS.exe
