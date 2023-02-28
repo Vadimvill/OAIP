@@ -1,5 +1,7 @@
-﻿  struct.c
-C:\Users\botme\source\repos\LB1S2VS\LB1S2VS\struct.c(140,37): warning C4244: функция: преобразование "float" в "int", возможна потеря данных
-C:\Users\botme\source\repos\LB1S2VS\LB1S2VS\struct.c(140,38): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-C:\Users\botme\source\repos\LB1S2VS\LB1S2VS\struct.c(108): warning C4715: setArraySize: значение возвращается не при всех путях выполнения
+﻿  Source.c
+  struct.c
+C:\Users\botme\source\repos\LB1S2VS\LB1S2VS\struct.c(122,37): warning C4244: функция: преобразование "float" в "int", возможна потеря данных
+C:\Users\botme\source\repos\LB1S2VS\LB1S2VS\struct.c(122,38): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+  Создание кода...
+C:\Users\botme\source\repos\LB1S2VS\LB1S2VS\struct.c(90): warning C4715: setArraySize: значение возвращается не при всех путях выполнения
   LB1S2VS.vcxproj -> C:\Users\botme\source\repos\LB1S2VS\Debug\LB1S2VS.exe
