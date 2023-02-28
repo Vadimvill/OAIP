@@ -9,6 +9,7 @@ void task() {
     int car = 0;
     int bool = 1;
     int index = 0;
+    int checkCreate = 1;
     while (bool) {
         rewind(stdin);
         printf("Select option\n 1-Create array || 2-Init car || 3-Print cars || 4-Sort coast || 5-Sort max speed ||"
@@ -16,10 +17,12 @@ void task() {
         select = setArraySize(select);
         switch (select) {
         case 1:
-            free(cars);
-            printf("Set size\n");
-            size = setArraySize(size);
-            cars = createCarArray(size);
+            if (checkCreate) {
+                printf("Set size\n");
+                size = setArraySize(size);
+                cars = createCarArray(size);
+                checkCreate = 0;
+            }
             break;
         case 2:
             printf("Set car\n");

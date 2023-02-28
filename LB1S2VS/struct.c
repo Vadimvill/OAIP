@@ -20,6 +20,7 @@ void deleteCar(struct Car* cars, int* size, int index) {
     for (int i = index; i < *size - 1; i++) {
         cars[i] = cars[i + 1];
     }
+    printf("%d", (*size)-1);
     free(cars[(*size) - 1].name);
     (*size)--;
     realloc(cars, sizeof(struct Car) * *size);
