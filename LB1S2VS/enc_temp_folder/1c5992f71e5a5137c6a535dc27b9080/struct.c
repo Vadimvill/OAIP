@@ -142,6 +142,7 @@ void initCar(struct Car* car,int index) {
         }
     }
     car[index].init = 1;
+    return car;
 }
 struct Car* initAllCars(struct Car* cars, int size) {
     for (int i = 0;i < size;i++) {
