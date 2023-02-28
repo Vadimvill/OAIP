@@ -10,7 +10,6 @@ struct Car {
     char* name;
     int init;
 };
-void Constructor(struct Car car, int color, int coast, float maxSpeed, char* string);
 struct Car* createCarArray(int size);
 struct Car* test();
 void printArrayStructs(struct Car* cars, int size);
