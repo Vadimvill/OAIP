@@ -35,13 +35,6 @@ struct Car* test() {
 
     return cars;
 }
-void Constructor(struct Car car, int color, int coast, float maxSpeed, char* string) {
-    car.name = string;
-    car.coast = coast;
-    car.color = color;
-    car.maxSpeed = maxSpeed;
-    car.init = 1;
-}
 void printArrayStructs(struct Car* cars, int size) {
     int bool = 0;
     for (int i = 0;i < size;i++) {
