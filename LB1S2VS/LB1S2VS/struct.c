@@ -20,27 +20,10 @@ void deleteCar(struct Car* cars, int* size, int index) {
     for (int i = index; i < *size - 1; i++) {
         cars[i] = cars[i + 1];
     }
-
+    printf("%d", (*size)-1);
+    free(cars[(*size) - 1].name);
     (*size)--;
-    realloc(cars, sizeof(struct Car) * *(size));
-}
-struct Car* test() {
-    struct Car* cars = NULL;
-    cars = createCarArray(5);
-    Constructor(cars[0], 1, 100, 300, "ferrari");
-    Constructor(cars[1], 2, 120, 200, "loshka");
-    Constructor(cars[2], 0, 90, 300, "honor");
-    Constructor(cars[3], 1, 130, 450, "pl");
-    Constructor(cars[4], 2, 1001, 2000, "ml");
-
-    return cars;
-}
-void Constructor(struct Car car, int color, int coast, float maxSpeed, char* string) {
-    car.name = string;
-    car.coast = coast;
-    car.color = color;
-    car.maxSpeed = maxSpeed;
-    car.init = 1;
+    realloc(cars, sizeof(struct Car) * *size);
 }
 void printArrayStructs(struct Car* cars, int size) {
     int bool = 0;
@@ -75,7 +58,6 @@ void selectionSortCoast(struct Car* cars, int n) {
         cars[maxInd] = cars[end];
         cars[end] = temp;
         end--;
-        maxInd = 0;
     }
 }
 void selectionSortMaxSpeed(struct Car* cars, int n) {
@@ -91,7 +73,6 @@ void selectionSortMaxSpeed(struct Car* cars, int n) {
         cars[maxInd] = cars[end];
         cars[end] = temp;
         end--;
-        maxInd = 0;
     }
 }
 int setArraySize(int a) {
@@ -103,6 +84,7 @@ int setArraySize(int a) {
         printf("Error\n");
         rewind(stdin);
         a = setArraySize(a);
+        return a;
     }
     else return a;
 }
