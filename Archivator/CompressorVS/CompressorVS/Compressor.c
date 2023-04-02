@@ -2,35 +2,35 @@
 #include "stdlib.h"
 #include "Compressor.h"
 #include "string.h"
-int push(Stack* stack, char* data) {
+int push(struct Stack* stack, char* data) {
     if (stack == NULL) {
         return -1;
     }
-    Node* newNode = malloc(sizeof(Node));
+    struct Node* newNode = malloc(sizeof(Node));
     newNode->name = data;
     newNode->next = stack->top;
     stack->top = newNode;
     return 1;
 }
-void init(Stack* s) {
+void init(struct Stack* s) {
     s->top = NULL;
 }
-char* pop(Stack* stack) {
+char* pop(struct Stack* stack) {
     if (isEmpty(stack)) {
         printf("StackIsEmpy\n");
         return NULL;
     }
     char* data = stack->top->name;
-    Node* tmp = stack->top;
+    struct Node* tmp = stack->top;
     stack->top = stack->top->next;
     free(tmp);
     return data;
 }
-int isEmpty(Stack* stack) {
+int isEmpty(struct Stack* stack) {
     return stack->top == NULL;
 }
 
-char isHasPairWithWord(Pair* dictionary, int j, char* word)
+char isHasPairWithWord(struct Pair* dictionary, int j, char* word)
 {
     for (int i = 0; i < j; i++)
         if (strcmp(dictionary[i].word1, word) == 0 || strcmp(dictionary[i].word2, word) == 0)
@@ -39,8 +39,8 @@ char isHasPairWithWord(Pair* dictionary, int j, char* word)
     return 0;
 }
 
-Pair* createDictionary(Words* words, int i, int* j) {
-    Pair* dictionary = NULL;
+struct Pair* createDictionary(struct Words* words, int i, int* j) {
+    struct Pair* dictionary = NULL;
     *j = 0;
 
     for (int m = 0;m < i;m++) {
@@ -70,9 +70,9 @@ Pair* createDictionary(Words* words, int i, int* j) {
             (*j)++;
 
             if (dictionary == NULL)
-                dictionary = malloc(sizeof(Pair));
+                dictionary = malloc(sizeof(struct Pair));
             else
-                dictionary = realloc(dictionary, sizeof(Pair) * (*j));
+                dictionary = realloc(dictionary, sizeof(struct Pair) * (*j));
 
             dictionary[*j - 1].word1 = words[m].word;
             dictionary[*j - 1].word2 = pairWord;
@@ -80,16 +80,16 @@ Pair* createDictionary(Words* words, int i, int* j) {
     }
     return dictionary;
 }
-void writeKeysInFile(Pair* dictionary, int j, FILE* file) {
+void writeKeysInFile(struct Pair* dictionary, int j, FILE* file) {
     for (int i = 0;i < j;i++) {
         fprintf(file, "%s %s\n", dictionary[i].word1, dictionary[i].word2);
     }
     fprintf(file, "%c", '\n');
 
 }
-Words* textToWord(Stack* stack, Words* words, int* i) {
+struct Words* textToWord(struct Stack* stack, struct Words* words, int* i) {
     *i = 1;
-    words = malloc(sizeof(Words) * (*i));
+    words = malloc(sizeof(struct Words) * (*i));
     words[(*i) - 1].word = pop(stack);
     words[(*i) - 1].count = 1;
     while (stack->top != NULL) {
@@ -105,7 +105,7 @@ Words* textToWord(Stack* stack, Words* words, int* i) {
         }
         if (bool) {
             (*i)++;
-            words = realloc(words, sizeof(Words) * (*i));
+            words = realloc(words, sizeof(struct Words) * (*i));
             words[(*i) - 1].word = temp;
             words[(*i) - 1].count = 1;
         }
@@ -137,7 +137,7 @@ char isWord(char* lexem)
     return 1;
 }
 
-char* findPairInDictionary(Pair* dictionary, int j, char* word)
+char* findPairInDictionary(struct Pair* dictionary, int j, char* word)
 {
     for (int i = 0; i < j; i++)
     {
@@ -150,7 +150,7 @@ char* findPairInDictionary(Pair* dictionary, int j, char* word)
     return NULL;
 }
 
-void replaceWordsInStringWithPairsInFile(FILE* file, char* string, Pair* dictionary, int j)
+void replaceWordsInStringWithPairsInFile(FILE* file, char* string, struct Pair* dictionary, int j)
 {
     unsigned int i = 0;
 
@@ -197,7 +197,7 @@ void replaceWordsInStringWithPairsInFile(FILE* file, char* string, Pair* diction
         fputc('\n', file);
 }
 
-void replaceWordWithPairInDictionaryInFile(const char* sourceFilePath, const char* outFilePath, Pair* dictionary, int j)
+void replaceWordWithPairInDictionaryInFile(const char* sourceFilePath, const char* outFilePath, struct Pair* dictionary, int j)
 {
     FILE* sourceFile = fopen(sourceFilePath, "rt");
     FILE* file = fopen(outFilePath, "wt");
@@ -215,7 +215,7 @@ void replaceWordWithPairInDictionaryInFile(const char* sourceFilePath, const cha
     fclose(file);
 }
 
-void countWordsWithStack(char* string, Stack* stack)
+void countWordsWithStack(char* string, struct Stack* stack)
 {
     unsigned int i = 0;
 
@@ -244,7 +244,7 @@ void countWordsWithStack(char* string, Stack* stack)
     }
 }
 
-void textToStack(Stack* stack) {
+void textToStack(struct Stack* stack) {
     FILE* file = fopen("C:\\Users\\botme\\Compressor\\text1original.txt", "r");
 
     char* string = calloc(2048, sizeof(char));

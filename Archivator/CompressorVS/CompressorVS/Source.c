@@ -3,14 +3,14 @@
 #include "Compressor.h"
 #include "string.h"
 int main() {
-    Stack* stack = malloc(sizeof(Stack));
+    struct Stack* stack = malloc(sizeof(Stack));
     init(stack);
     textToStack(stack);
     int i = 0;
 
-    Words* words = textToWord(stack, NULL, &i);
+    struct Words* words = textToWord(stack, NULL, &i);
     int j = 0;
-    Pair* dictionary = createDictionary(words, i, &j);
+    struct Pair* dictionary = createDictionary(words, i, &j);
     char* soursePath = calloc(2048, sizeof(char));
     char* outPath = calloc(2048, sizeof(char));
     printf("Set PATH of sourseFile\n");
