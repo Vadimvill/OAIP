@@ -202,7 +202,12 @@ void replaceWordWithPairInDictionaryInFile(const char* sourceFilePath, const cha
 {
     FILE* sourceFile = fopen(sourceFilePath, "rt");
     FILE* file = fopen(outFilePath, "wt");
-    if (file == NULL || sourceFile == NULL) return;
+    if (sourceFile == NULL || file == NULL) {
+        if (sourceFile != NULL) fclose(sourceFile);
+        if (file != NULL) fclose(file);
+
+        return;
+    }
 
     writeKeysInFile(dictionary, j, file);
 
