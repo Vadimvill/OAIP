@@ -30,7 +30,7 @@ int isEmpty(struct Stack* stack) {
     return stack->top == NULL;
 }
 
-char isHasPairWithWord(struct Pair* dictionary, int j, char* word)
+char isHasPairWithWord(const struct Pair* dictionary, int j, char* word)
 {
     for (int i = 0; i < j; i++)
         if (strcmp(dictionary[i].word1, word) == 0 || strcmp(dictionary[i].word2, word) == 0)
