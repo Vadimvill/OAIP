@@ -2,6 +2,7 @@
 #include "stdlib.h"
 #include "Compressor.h"
 #include "string.h"
+#define _CRT_SECURE_NO_WARNINGS
 int push(struct Stack* stack, char* data) {
     if (stack == NULL) {
         return -1;
@@ -53,9 +54,8 @@ struct Pair* createDictionary(struct Words* words, int i, int* j) {
         for (int b = m + 1;b < i;b++) {
             if (isHasPairWithWord(dictionary, *j, words[b].word))
                 continue;
-
-            size_t startSize = (strlen_s(words[m].word,2048) * words[m].count) + (strlen_s(words[b].word,2048) * words[b].count);
-            size_t endSize = (strlen_s(words[m].word,2048) * words[b].count) + (strlen_s(words[b].word,2048) * words[m].count);
+            size_t startSize = (strnlen_s(words[m].word, 2048) * words[m].count) + (strnlen_s(words[b].word, 2048) * words[b].count);
+            size_t endSize = (strnlen_s(words[m].word, 2048) * words[b].count) + (strnlen_s(words[b].word, 2048) * words[m].count);
             int currentProfit = startSize - endSize;
 
             if (currentProfit > profit)
@@ -130,6 +130,7 @@ char isLetter(char c)
 
 char isWord(const char* lexem)
 {
+    if (lexem == NULL) return 0;
     for (int i = 0; lexem[i] != '\0'; i++)
         if (isLetter(lexem[i]) == 0)
             return 0;
@@ -248,6 +249,7 @@ void countWordsWithStack(const char* string, struct Stack* stack)
             push(stack, lexem);
         else
             free(lexem);
+      
     }
 }
 
@@ -256,8 +258,10 @@ void textToStack(struct Stack* stack) {
     if (file == NULL) return;
     char* string = calloc(2048, sizeof(char));
 
-    while (fgets(string, 2048 * sizeof(char), file) != 0)
+    while (fgets(string, 2048 * sizeof(char), file) != 0) {
         countWordsWithStack(string, stack);
+        string = calloc(2048, sizeof(char));
+    }
 
     free(string);
 
