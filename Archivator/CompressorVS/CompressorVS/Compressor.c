@@ -2,7 +2,6 @@
 #include "stdlib.h"
 #include "Compressor.h"
 #include "string.h"
-#define _CRT_SECURE_NO_WARNINGS
 int push(struct Stack* stack, char* data) {
     if (stack == NULL) {
         return -1;
@@ -154,7 +153,10 @@ char* findPairInDictionary(struct Pair* dictionary, int j,const char* word)
 void replaceWordsInStringWithPairsInFile(FILE* file,const char* string, struct Pair* dictionary, int j)
 {
     unsigned int i = 0;
-    if (file == NULL) return;
+    if (file == NULL) {
+        free(file);
+        return;
+    }
 
     while (string[i] != '\n' && string[i] != '\0')
     {
