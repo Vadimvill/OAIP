@@ -6,7 +6,7 @@ Pair* createDictionary(FILE* keyFile, int* i) {
     char* string = calloc(2048, sizeof(char));
     (*i) = 1;
     Pair* dictionary = malloc(sizeof(Pair));
-    while ((fgets(string, 2048 * sizeof(char), keyFile) != 0)) {
+    while (fgets(string, 2048 * sizeof(char), keyFile) != 0) {
         if (string[0] == '\n')
             break;
 
@@ -27,14 +27,13 @@ Pair* createDictionary(FILE* keyFile, int* i) {
         (*i)++;
         dictionary = realloc(dictionary, sizeof(Pair) * (*i));
     }
-    dictionary = realloc(dictionary, sizeof(Pair) * ((*i) - 1));
     (*i)--;
     return dictionary;
 }
-void replaceWordsInStringWithPairsInFile(FILE* file, char* string, Pair* dictionary, int j)
+void replaceWordsInStringWithPairsInFile(FILE* file,const char* string, Pair* dictionary, int j)
 {
     unsigned int i = 0;
-
+    if (file = NULL) return;
     while (string[i] != '\n' && string[i] != '\0')
     {
         unsigned int startPos = i;
@@ -81,7 +80,8 @@ void replaceWordWithPairInDictionaryInFile(const char* sourceFilePath, const cha
 {
     FILE* sourceFile = fopen(sourceFilePath, "rt");
     FILE* file = fopen(outFilePath, "wt");
-    Pair* dictionary = malloc(sizeof(Pair));
+    if (sourceFile == NULL || file == NULL) return;
+    Pair* dictionary = NULL;
     int i = 0;
     dictionary = createDictionary(sourceFile, &i);
 
@@ -95,7 +95,7 @@ void replaceWordWithPairInDictionaryInFile(const char* sourceFilePath, const cha
     fclose(sourceFile);
     fclose(file);
 }
-char* findPairInDictionary(Pair* dictionary, int j, char* word)
+char* findPairInDictionary(Pair* dictionary, int j,const char* word)
 {
     for (int i = 0; i < j; i++)
     {
@@ -123,7 +123,7 @@ char isLetter(char c)
     return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
 }
 
-char isWord(char* lexem)
+char isWord(const char* lexem)
 {
     for (int i = 0; lexem[i] != '\0'; i++)
         if (isLetter(lexem[i]) == 0)
