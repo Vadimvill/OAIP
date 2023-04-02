@@ -27,13 +27,12 @@ Pair* createDictionary(FILE* keyFile, int* i) {
         (*i)++;
         dictionary = realloc(dictionary, sizeof(Pair) * (*i));
     }
-    (*i)--;
     return dictionary;
 }
 void replaceWordsInStringWithPairsInFile(FILE* file,const char* string, Pair* dictionary, int j)
 {
     unsigned int i = 0;
-    if (file = NULL) return;
+    if (file == NULL) return;
     while (string[i] != '\n' && string[i] != '\0')
     {
         unsigned int startPos = i;
@@ -80,10 +79,15 @@ void replaceWordWithPairInDictionaryInFile(const char* sourceFilePath, const cha
 {
     FILE* sourceFile = fopen(sourceFilePath, "rt");
     FILE* file = fopen(outFilePath, "wt");
-    if (sourceFile == NULL || file == NULL) return;
+    if (sourceFile == NULL || file == NULL) {
+        fclose(file);
+        fclose(sourceFile);
+        return;
+    }
     Pair* dictionary = NULL;
     int i = 0;
     dictionary = createDictionary(sourceFile, &i);
+    i--;
 
     char* string = calloc(2048, sizeof(char));
 
@@ -91,7 +95,7 @@ void replaceWordWithPairInDictionaryInFile(const char* sourceFilePath, const cha
         replaceWordsInStringWithPairsInFile(file, string, dictionary, i);
 
     free(string);
-
+    free(dictionary);
     fclose(sourceFile);
     fclose(file);
 }
