@@ -54,8 +54,8 @@ struct Pair* createDictionary(struct Words* words, int i, int* j) {
             if (isHasPairWithWord(dictionary, *j, words[b].word))
                 continue;
 
-            size_t startSize = (strlen(words[m].word) * words[m].count) + (strlen(words[b].word) * words[b].count);
-            size_t endSize = (strlen(words[m].word) * words[b].count) + (strlen(words[b].word) * words[m].count);
+            size_t startSize = (strlen_s(words[m].word,2048) * words[m].count) + (strlen_s(words[b].word,2048) * words[b].count);
+            size_t endSize = (strlen_s(words[m].word,2048) * words[b].count) + (strlen_s(words[b].word,2048) * words[m].count);
             int currentProfit = startSize - endSize;
 
             if (currentProfit > profit)
