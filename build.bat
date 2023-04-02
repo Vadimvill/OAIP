@@ -1,0 +1,2 @@
+msbuild CompressorVS\CompressorVS\CompressorVS.vcxproj
+msbuild DecompressorVS\DecompressorVS\DecompressorVS.vcxproj
