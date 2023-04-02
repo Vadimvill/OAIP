@@ -1,2 +1,2 @@
-msbuild CompressorVS\CompressorVS\CompressorVS.vcxproj
-msbuild DecompressorVS\DecompressorVS\DecompressorVS.vcxproj
+msbuild Archivator\CompressorVS\CompressorVS\CompressorVS.vcxproj
+msbuild Archivator\DecompressorVS\DecompressorVS\DecompressorVS.vcxproj
