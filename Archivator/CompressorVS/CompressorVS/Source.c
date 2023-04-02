@@ -14,9 +14,9 @@ int main() {
     char* soursePath = calloc(2048, sizeof(char));
     char* outPath = calloc(2048, sizeof(char));
     printf("Set PATH of sourseFile\n");
-    scanf("%s", soursePath,2048);
+    scanf("%2048s", soursePath);
     printf("Set PATH of outFile\n");
-    scanf("%s", outPath,2048);
+    scanf("%2048s", outPath);
 
     replaceWordWithPairInDictionaryInFile
     (soursePath,
