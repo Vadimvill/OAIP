@@ -26,11 +26,11 @@ char* pop(struct Stack* stack) {
     free(tmp);
     return data;
 }
-int isEmpty(struct Stack* stack) {
+int isEmpty(const struct Stack* stack) {
     return stack->top == NULL;
 }
 
-char isHasPairWithWord(const struct Pair* dictionary, int j, char* word)
+char isHasPairWithWord(const struct Pair* dictionary, int j,const char* word)
 {
     for (int i = 0; i < j; i++)
         if (strcmp(dictionary[i].word1, word) == 0 || strcmp(dictionary[i].word2, word) == 0)
@@ -128,7 +128,7 @@ char isLetter(char c)
     return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
 }
 
-char isWord(char* lexem)
+char isWord(const char* lexem)
 {
     for (int i = 0; lexem[i] != '\0'; i++)
         if (isLetter(lexem[i]) == 0)
@@ -137,7 +137,7 @@ char isWord(char* lexem)
     return 1;
 }
 
-char* findPairInDictionary(struct Pair* dictionary, int j, char* word)
+char* findPairInDictionary(struct Pair* dictionary, int j,const char* word)
 {
     for (int i = 0; i < j; i++)
     {
@@ -150,9 +150,10 @@ char* findPairInDictionary(struct Pair* dictionary, int j, char* word)
     return NULL;
 }
 
-void replaceWordsInStringWithPairsInFile(FILE* file, char* string, struct Pair* dictionary, int j)
+void replaceWordsInStringWithPairsInFile(FILE* file,const char* string, struct Pair* dictionary, int j)
 {
     unsigned int i = 0;
+    if (file == NULL) return;
 
     while (string[i] != '\n' && string[i] != '\0')
     {
@@ -201,6 +202,7 @@ void replaceWordWithPairInDictionaryInFile(const char* sourceFilePath, const cha
 {
     FILE* sourceFile = fopen(sourceFilePath, "rt");
     FILE* file = fopen(outFilePath, "wt");
+    if (file == NULL || sourceFile == NULL) return;
 
     writeKeysInFile(dictionary, j, file);
 
@@ -215,7 +217,7 @@ void replaceWordWithPairInDictionaryInFile(const char* sourceFilePath, const cha
     fclose(file);
 }
 
-void countWordsWithStack(char* string, struct Stack* stack)
+void countWordsWithStack(const char* string, struct Stack* stack)
 {
     unsigned int i = 0;
 
@@ -246,7 +248,7 @@ void countWordsWithStack(char* string, struct Stack* stack)
 
 void textToStack(struct Stack* stack) {
     FILE* file = fopen("C:\\Users\\botme\\Compressor\\text1original.txt", "r");
-
+    if (file == NULL) return;
     char* string = calloc(2048, sizeof(char));
 
     while (fgets(string, 2048 * sizeof(char), file) != 0)
