@@ -141,7 +141,7 @@ char* findPairInDictionary(struct Pair* dictionary, int j,const char* word)
 {
     for (int i = 0; i < j; i++)
     {
-        if (dictionary[i].word1 = NULL || dictionary[i].word2 == NULL)
+        if (dictionary[i].word1 == NULL || dictionary[i].word2 == NULL)
             continue;
         if (strcmp(dictionary[i].word1, word) == 0)
             return dictionary[i].word2;
@@ -260,7 +260,6 @@ void countWordsWithStack(const char* string, struct Stack* stack)
 void textToStack(struct Stack* stack) {
     FILE* file = fopen("C:\\Users\\botme\\Compressor\\text1original.txt", "r");
     if (file == NULL) {
-        fclose(file);
         return;
     }
     char* string = calloc(2048, sizeof(char));
