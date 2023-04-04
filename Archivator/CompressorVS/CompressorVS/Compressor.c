@@ -130,9 +130,14 @@ char isLetter(char c)
 char isWord(const char* lexem)
 {
     if (lexem == NULL) return 0;
-    for (int i = 0; lexem[i] != '\0'; i++)
-        if (isLetter(lexem[i]) == 0)
+    int i = 0;
+    while (1) {
+        if (lexem[i] == '\0') break;
+        else if (isLetter(lexem[i] == 0))
             return 0;
+        i++;
+        
+    }
 
     return 1;
 }
