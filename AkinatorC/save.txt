@@ -1,0 +1,87 @@
+is liquid
+it's frozen
+its an animal
+its plant
+it's made of sugar
+cake
+NULL
+NULL
+it's soft
+candy
+NULL
+NULL
+cotton candy
+NULL
+NULL
+its sweet
+it's green
+corn
+NULL
+NULL
+cabbage
+NULL
+NULL
+its big
+it's blue
+strawberry
+NULL
+NULL
+blueberry
+NULL
+NULL
+it's red
+watermelon
+NULL
+NULL
+melon
+NULL
+NULL
+is this animal big
+it lives in water
+chicken
+NULL
+NULL
+fish
+NULL
+NULL
+this animal is low
+beef
+NULL
+NULL
+pork
+NULL
+NULL
+it's not sweet
+ice cream
+NULL
+NULL
+ice
+NULL
+NULL
+is black
+it's not transparent
+it's carbonated
+is alchohol
+water
+NULL
+NULL
+wiskey
+NULL
+NULL
+soda
+NULL
+NULL
+juice
+NULL
+NULL
+it's made of leaves
+its sweet
+coffe
+NULL
+NULL
+cola
+NULL
+NULL
+tea
+NULL
+NULL
