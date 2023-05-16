@@ -170,7 +170,7 @@ void replaceWordsInStringWithPairsInFile(FILE* file,const char* string, struct P
         return;
     }
 
-    while (string[i] != '\n' && string[i] != '\0')
+    while (string[i] != '\n' && string[i] != '\0' && i < strlen(string))
     {
         unsigned int startPos = i;
 
