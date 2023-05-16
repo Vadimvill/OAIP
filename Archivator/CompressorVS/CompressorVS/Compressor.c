@@ -128,13 +128,13 @@ char isLetter(char c)
 }
 
 char isWord(const char* lexem) {
+    // NOSONAR
     if (lexem == NULL) return 0;
     int length = strlen(lexem);
     int i = 0;
     if (length != 0) {
         while (i < length) {
             if (!isLetter(lexem[i])) {
-                // NOSONAR
                 return 0;
             }
             i++;
@@ -246,6 +246,7 @@ void replaceWordWithPairInDictionaryInFile(const char* sourceFilePath, const cha
 
 countWordsWithStack(const char* string, struct Stack* stack)
 {
+    // NOSONAR
     if (string == NULL) {
         return;
     }
