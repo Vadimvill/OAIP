@@ -246,6 +246,11 @@ void countWordsWithStack(const char* string, struct Stack* stack)
         while (isSperator(string[i]) == 0)
             i++;
 
+        if (i >= strlen(string))
+        {
+            break;
+        }
+
         size_t lexemSize = sizeof(char) * (i - lexemStartPos + 1);
         char* lexem = malloc(lexemSize);
 
