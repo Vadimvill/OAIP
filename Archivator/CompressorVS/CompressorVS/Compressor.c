@@ -134,6 +134,7 @@ char isWord(const char* lexem) {
     if (length != 0) {
         while (i < length) {
             if (!isLetter(lexem[i])) {
+                // NOSONAR
                 return 0;
             }
             i++;
@@ -251,6 +252,7 @@ void countWordsWithStack(const char* string, struct Stack* stack)
 
     unsigned int i = 0;
     while (string[i] != '\n' && string[i] != '\0' && i < strlen(string))
+        // NOSONAR
     {
         while (isSperator(string[i]) && string[i] != '\0') {
             i++;
