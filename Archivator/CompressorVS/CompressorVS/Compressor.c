@@ -135,11 +135,12 @@ char isWord(const char* lexem) {
         if (lexem[i] != '\0') {
             if (!isLetter(lexem[i]))
                 return 0;
+            i++;
         }
         else {
             break;
         }
-        i++;
+        
     }
     return 1;
 }
