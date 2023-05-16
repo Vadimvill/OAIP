@@ -250,7 +250,7 @@ void countWordsWithStack(const char* string, struct Stack* stack)
     }
 
     unsigned int i = 0;
-    while (string[i] != '\n' && string[i] != '\0')
+    while (string[i] != '\n' && string[i] != '\0' && i < strlen(string))
     {
         while (isSperator(string[i]) && string[i] != '\0') {
             i++;
