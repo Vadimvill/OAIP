@@ -138,7 +138,7 @@ char isWord(const char* lexem) {
     return 1;
 }
 
-char* findPairInDictionary(struct Pair* dictionary, int j,const char* word)
+char* findPairInDictionary(struct Pair* dictionary, int j, const char* word)
 {
     for (int i = 0; i < j; i++)
     {
@@ -152,6 +152,7 @@ char* findPairInDictionary(struct Pair* dictionary, int j,const char* word)
 
     return NULL;
 }
+
 
 void replaceWordsInStringWithPairsInFile(FILE* file,const char* string, struct Pair* dictionary, int j)
 {
@@ -219,14 +220,20 @@ void replaceWordWithPairInDictionaryInFile(const char* sourceFilePath, const cha
 
     char* string = calloc(2048, sizeof(char));
 
-    while (fgets(string, 2048 * sizeof(char), sourceFile) != 0)
+    while (fgets(string, 2048 * sizeof(char), sourceFile) != 0) {
+        if (string == NULL) {
+            fprintf(file, "\n");
+            continue;
+        }
         replaceWordsInStringWithPairsInFile(file, string, dictionary, j);
+    }
 
     free(string);
 
     fclose(sourceFile);
     fclose(file);
 }
+
 
 void countWordsWithStack(const char* string, struct Stack* stack)
 {
