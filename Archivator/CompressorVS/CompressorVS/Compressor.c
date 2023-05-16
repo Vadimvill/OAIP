@@ -127,18 +127,14 @@ char isLetter(char c)
     return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
 }
 
-char isWord(const char* lexem)
-{
+char isWord(const char* lexem) {
     if (lexem == NULL) return 0;
     int i = 0;
-    while (1) {
-        if (lexem[i] == '\0') break;
-        else if (isLetter(lexem[i] == 0))
+    while (lexem[i] != '\0') {
+        if (!isLetter(lexem[i]))
             return 0;
         i++;
-        
     }
-
     return 1;
 }
 
@@ -236,6 +232,7 @@ void countWordsWithStack(const char* string, struct Stack* stack)
 {
     unsigned int i = 0;
 
+    if (string == NULL) return;
     while (string[i] != '\n' && string[i] != '\0')
     {
         while (isSperator(string[i]))
