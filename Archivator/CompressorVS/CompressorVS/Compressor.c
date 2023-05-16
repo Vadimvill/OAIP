@@ -292,14 +292,12 @@ void textToStack(struct Stack* stack) {
     if (file == NULL) {
         return;
     }
-    char* string = calloc(2048, sizeof(char));
+    char* string;
 
-    while (fgets(string, 2048 * sizeof(char), file) != 0) {
+    while ((string = calloc(2048, sizeof(char))) != NULL && fgets(string, 2048, file) != NULL) {
         countWordsWithStack(string, stack);
-        string = calloc(2048, sizeof(char));
+        free(string);
     }
-
-    free(string);
 
     if (ferror(file) != 0)
     {
