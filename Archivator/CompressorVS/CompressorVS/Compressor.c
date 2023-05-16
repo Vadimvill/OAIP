@@ -128,7 +128,6 @@ char isLetter(char c)
 }
 
 char isWord(const char* lexem) {
-    // NOSONAR
     if (lexem == NULL) return 0;
     int length = strlen(lexem);
     int i = 0;
@@ -144,7 +143,7 @@ char isWord(const char* lexem) {
     else return 0;
 
     return 1;
-}; //NOSONAR
+} //NOSONAR
 
 
 char* findPairInDictionary(struct Pair* dictionary, int j, const char* word)
@@ -287,7 +286,7 @@ void countWordsWithStack(const char* string, struct Stack* stack)
             free(lexem);
         }
     }
-};//NOSONAR
+} //NOSONAR
 
 
 
