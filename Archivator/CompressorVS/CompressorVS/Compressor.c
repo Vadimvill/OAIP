@@ -131,13 +131,17 @@ char isWord(const char* lexem) {
     if (lexem == NULL) return 0;
     int length = strlen(lexem);
     int i = 0;
-    while (i < length) {
-        if (!isLetter(lexem[i])) {
-            return 0;
+    if (length != 0) {
+        while (i < length) {
+            if (!isLetter(lexem[i])) {
+                return 0;
             }
-        i++;
-        
+            i++;
+
+        }
     }
+    else return 0;
+   
     return 1;
 }
 
