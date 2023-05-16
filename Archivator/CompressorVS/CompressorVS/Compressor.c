@@ -230,39 +230,47 @@ void replaceWordWithPairInDictionaryInFile(const char* sourceFilePath, const cha
 
 void countWordsWithStack(const char* string, struct Stack* stack)
 {
-    unsigned int i = 0;
+    if (string == NULL) {
+        return;
+    }
 
-    if (string == NULL) return;
+    unsigned int i = 0;
     while (string[i] != '\n' && string[i] != '\0')
     {
-        while (isSperator(string[i]))
+        while (isSperator(string[i]) && string[i] != '\0') {
             i++;
+        }
 
-        if (string[i] == '\n' || string[i] == '\0')
+        if (string[i] == '\n' || string[i] == '\0') {
             continue;
+        }
 
         unsigned int lexemStartPos = i;
 
-        while (isSperator(string[i]) == 0)
+        while (isSperator(string[i]) == 0 && string[i] != '\0') {
             i++;
-
-        if (i >= strlen(string))
-        {
-            break;
         }
 
         size_t lexemSize = sizeof(char) * (i - lexemStartPos + 1);
         char* lexem = malloc(lexemSize);
 
-        strncpy_s(lexem, lexemSize, string + lexemStartPos, lexemSize - 1);
+        if (lexem == NULL) {
+            perror("Memory allocation failed");
+            exit(-1);
+        }
 
-        if (isWord(lexem))
+        strncpy_s(lexem, lexemSize, string + lexemStartPos, lexemSize - 1);
+        lexem[lexemSize - 1] = '\0';
+
+        if (isWord(lexem)) {
             push(stack, lexem);
-        else
+        }
+        else {
             free(lexem);
-      
+        }
     }
 }
+
 
 void textToStack(struct Stack* stack) {
     FILE* file = fopen("C:\\Users\\botme\\Compressor\\text1original.txt", "r");
