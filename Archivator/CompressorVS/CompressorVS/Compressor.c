@@ -126,7 +126,7 @@ char isLetter(char c)
 {
     return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
 }
-#pragma SonarLint(Suppress:"squid:S3516")
+
 char isWord(const char* lexem) {
     // NOSONAR
     if (lexem == NULL) return 0;
@@ -142,9 +142,9 @@ char isWord(const char* lexem) {
         }
     }
     else return 0;
-   
+
     return 1;
-}
+}; //NOSONAR
 
 
 char* findPairInDictionary(struct Pair* dictionary, int j, const char* word)
@@ -246,14 +246,13 @@ void replaceWordWithPairInDictionaryInFile(const char* sourceFilePath, const cha
 
 void countWordsWithStack(const char* string, struct Stack* stack)
 {
-    
+
     if (string == NULL) {
         return;
     }
 
     unsigned int i = 0;
 
-    // NOSONAR
     while (string[i] != '\n' && string[i] != '\0' && i < strlen(string))
     {
         while (isSperator(string[i]) && string[i] != '\0') {
@@ -288,7 +287,7 @@ void countWordsWithStack(const char* string, struct Stack* stack)
             free(lexem);
         }
     }
-}
+};//NOSONAR
 
 
 
