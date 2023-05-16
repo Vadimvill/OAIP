@@ -305,6 +305,6 @@ void textToStack(struct Stack* stack) {
         perror("File reading error");
         exit(-1);
     }
-
+    free(string);
     fclose(file);
 }
