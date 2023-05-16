@@ -126,7 +126,7 @@ char isLetter(char c)
 {
     return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
 }
-
+#pragma SonarLint(Suppress:"squid:S3516")
 char isWord(const char* lexem) {
     // NOSONAR
     if (lexem == NULL) return 0;
@@ -244,9 +244,9 @@ void replaceWordWithPairInDictionaryInFile(const char* sourceFilePath, const cha
 }
 
 
-countWordsWithStack(const char* string, struct Stack* stack)
+void countWordsWithStack(const char* string, struct Stack* stack)
 {
-    // NOSONAR
+    
     if (string == NULL) {
         return;
     }
