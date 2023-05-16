@@ -244,15 +244,16 @@ void replaceWordWithPairInDictionaryInFile(const char* sourceFilePath, const cha
 }
 
 
-void countWordsWithStack(const char* string, struct Stack* stack)
+countWordsWithStack(const char* string, struct Stack* stack)
 {
     if (string == NULL) {
         return;
     }
 
     unsigned int i = 0;
+
+    // NOSONAR
     while (string[i] != '\n' && string[i] != '\0' && i < strlen(string))
-        // NOSONAR
     {
         while (isSperator(string[i]) && string[i] != '\0') {
             i++;
@@ -287,6 +288,7 @@ void countWordsWithStack(const char* string, struct Stack* stack)
         }
     }
 }
+
 
 
 void textToStack(struct Stack* stack) {
