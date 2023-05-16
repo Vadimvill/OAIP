@@ -1,7 +1,8 @@
 ﻿cl : командная строка warning D9025: переопределение "/sdl" на "/GS-"
   Compressor.c
-C:\Users\botme\OneDrive\Рабочий стол\Archivator\CompressorVS\CompressorVS\Compressor.c(5,1): warning C4005: _CRT_SECURE_NO_WARNINGS: изменение макроопределения
-C:\Users\botme\OneDrive\Рабочий стол\Archivator\CompressorVS\CompressorVS\Compressor.c : message : см. предыдущее определение "_CRT_SECURE_NO_WARNINGS"
-C:\Users\botme\OneDrive\Рабочий стол\Archivator\CompressorVS\CompressorVS\Compressor.c(30,33): warning C4028: формальный параметр 1 отличается от объявления
-C:\Users\botme\OneDrive\Рабочий стол\Archivator\CompressorVS\CompressorVS\Compressor.c(59,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\botme\OneDrive\Рабочий стол\Archivator\CompressorVS\CompressorVS\Compressor.c(29,33): warning C4028: формальный параметр 1 отличается от объявления
+C:\Users\botme\OneDrive\Рабочий стол\Archivator\CompressorVS\CompressorVS\Compressor.c(58,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\botme\OneDrive\Рабочий стол\Archivator\CompressorVS\CompressorVS\Compressor.c(132,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  Source.c
+  Создание кода...
   CompressorVS.vcxproj -> C:\Users\botme\OneDrive\Рабочий стол\Archivator\CompressorVS\x64\Debug\CompressorVS.exe
